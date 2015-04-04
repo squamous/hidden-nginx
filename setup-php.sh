@@ -5,4 +5,3 @@ sed -i 's/start-stop-daemon --start/ip netns exec nginx start-stop-daemon --star
 sed -i 's/^;chroot.*/chroot = \/home\/nginx/' /etc/php5/fpm/pool.d/www.conf
 sed -i 's/^listen = .*/listen = 9000/' /etc/php5/fpm/pool.d/www.conf
 sed -i 's/^;cgi.fix_pathinfo.*/cgi.fix_pathinfo = 0/' /etc/php5/fpm/pool.d/www.conf
-service php5-fpm start

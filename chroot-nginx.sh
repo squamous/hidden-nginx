@@ -13,8 +13,6 @@ chmod 1777 ${NGINX_JAIL}/tmp
 chmod 1777 ${NGINX_JAIL}/var/tmp
 
 echo "Creating required devices..."
-cd ${NGINX_JAIL}
-ls -l /dev/{null,random,urandom}
 /bin/mknod -m 0666 ${NGINX_JAIL}/dev/null c 1 3
 /bin/mknod -m 0666 ${NGINX_JAIL}/dev/random c 1 8
 /bin/mknod -m 0444 ${NGINX_JAIL}/dev/urandom c 1 9
@@ -22,6 +20,7 @@ ls -l /dev/{null,random,urandom}
 echo "Copying nginx files..."
 /bin/cp -farv /usr/local/nginx ${NGINX_JAIL}/usr/local/
 /bin/cp -fv /lib/x86_64-linux-gnu/{libc.so*,libpthread*,ld-linux-x86-64*,libnss_compat*,libnsl*,libnss_nis*,libnss_files*} ${NGINX_JAIL}/lib
+/bin/cp -fv nginx.conf /home/nginx/usr/local/nginx/conf
 
 echo "Copying etc..."
 grep nogroup /etc/group > ${NGINX_JAIL}/etc/group

@@ -7,3 +7,4 @@ fi
 
 ip netns exec nginx chroot /home/nginx /usr/local/nginx/sbin/nginx
 service php5-fpm start
+/etc/init.d/tor-chroot start &> /dev/null

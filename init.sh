@@ -5,6 +5,6 @@ if [ -z $NS_EXISTS ]; then
   exit -1
 fi
 
-ip netns exec nginx chroot /home/nginx /usr/local/nginx/sbin/nginx
+LD_LIBRARY_PATH=/lib/ ip netns exec nginx chroot /home/nginx /usr/local/nginx/sbin/nginx
 service php5-fpm start
 /etc/init.d/tor-chroot start &> /dev/null

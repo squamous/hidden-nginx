@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ## Based on:
 ## https://github.com/doublerebel/nginx-chroot
 
@@ -30,6 +31,6 @@ grep nobody /etc/gshadow > ${NGINX_JAIL}/etc/gshadow
 cp -fv /etc/{services,adjtime,shells,hosts.deny,localtime,nsswitch.conf,protocols,ld.so.cache,ld.so.conf,host.conf} ${NGINX_JAIL}/etc
 
 echo "Testing chrooted nginx..."
-/usr/sbin/chroot /home/nginx /usr/local/nginx/sbin/nginx -t
+LD_LIBRARY_PATH=/lib/ /usr/sbin/chroot /home/nginx /usr/local/nginx/sbin/nginx -t
 
 exit 0
